@@ -1,9 +1,11 @@
 const path = require('path')
 const { spawn } = require('child_process');
-const { cwd } = require('process');
 
-mainAppFile = path.join(cwd(), "app/app.py")
+mainAppFile = path.join(__dirname, "/app/app.py")
 
 console.log(mainAppFile)
 
-const python = spawn('python', [mainAppFile]);
+
+const pythonS = spawn('python', [mainAppFile]);
+
+//pythonS.stderr.pipe(process.stderr);  //Run this if the window does'nt open

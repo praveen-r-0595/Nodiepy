@@ -3,7 +3,7 @@ import json5
 
 useDatabase = False
 
-db = SqliteDatabase('data.db')
+db = SqliteDatabase('./data/data.db')
 
 class Data(Model):
     name = CharField()
@@ -19,6 +19,7 @@ def startDB():
         db.connect()
         db.create_tables([Data])
     
+"""
 
 def createTable(props):
     js_obj = json5.loads(props)
@@ -31,6 +32,9 @@ def createTable(props):
         class Meta:
             database = db
             db_table = "namesss"
+
+
+"""
 
     
 def AddData():
