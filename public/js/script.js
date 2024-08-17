@@ -10,3 +10,15 @@ window.addEventListener('pywebviewready', function() {
     var container = document.getElementById('pywebview-status')
     container.innerHTML = '<i>pywebview</i> is ready'
 })
+
+
+data = {
+    name : "text",
+    number : "integer"
+}
+
+function createDataTable(){
+    myJSON = JSON.stringify(data)
+    dbname = "dynamiccreated"
+    pywebview.api.createTableData(dbname, myJSON)
+}

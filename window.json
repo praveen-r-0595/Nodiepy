@@ -4,12 +4,12 @@
         "width" : 1920,
         "height" : 1080,
         "fullscreen" : false,
-        "maximised" : true,
+        "maximised" : false,
         "min_size_x" : 600,
         "min_size_y" : 400,
-        "confirm_close" : true,
-        "mainFile" : "../public/index.html",
-        "useDatabase": true
+        "confirm_close" : false,
+        "mainFile" : "public/index.html",
+        "useDatabase": true,
+        "shouldHaveMenu" : false
     }
-    
 }

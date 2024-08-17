@@ -1,8 +1,13 @@
 import database as fb
 
+
+
 class Api():
+    
     def log(self, value):
         print(value)
+        fb.startDB()
+        fb.AddData()
 
     """
     def StartAndAddData(self, props):
@@ -11,3 +16,5 @@ class Api():
         fb.createTable(props)
     """
     
+    def createTableData(self, dbname, data ):
+        fb.createTable(dbname, data)

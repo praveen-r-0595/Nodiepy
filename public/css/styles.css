@@ -9,11 +9,11 @@ body{
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-color: rgb(25, 25, 25);
+    background-color: #202020;
 }
 
 .mainAppContainer{
-    background-color: rgb(56, 56, 56);
+    background-color: #00cc66;
     width: 98%;
     height: 98%;
     border-radius: 1em;

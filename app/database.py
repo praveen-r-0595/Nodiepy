@@ -1,9 +1,10 @@
 from peewee import *
 import json5
+from playhouse.migrate import *
 
 useDatabase = False
 
-db = SqliteDatabase('./data/data.db')
+db = SqliteDatabase('app/data/data.db') # Database Location from root directory - Nodiepy
 
 class Data(Model):
     name = CharField()
@@ -19,23 +20,52 @@ def startDB():
         db.connect()
         db.create_tables([Data])
     
-"""
 
-def createTable(props):
-    js_obj = json5.loads(props)
-    
-    print(js_obj)
-    
+# The below function is to dynamically create a table in sqlite db
+def createTable(dbname, props):
+    global db
+    print(props)
+    jsObj = json5.loads(props)
+
+    keys = list(jsObj.keys())
+    value = list(jsObj.values())
+
+    migrator = SqliteMigrator(db)
+
     class ClassName(Model):
-
-
+       
         class Meta:
             database = db
-            db_table = "namesss"
+            db_table = dbname
+
+    db.connect()
+    db.create_tables([ClassName])
+    
+    for key, value in jsObj.items():
+        
+        currentField = findField(value)
+
+        migrate(
+            migrator.add_column(dbname, str(key), IntegerField(default=0))
+        )
 
 
-"""
+def findField(checkValue):
+    match checkValue:
+            case 'integer':
+                field = IntegerField(default = 0)
+            case "text":
+                field = CharField(default = "data")
+            case "date":
+                field = DateField(default = None)
+            case "boolean":
+                field = IntegerField(default = 0)
+            case "largetext":
+                field = TextField(default = None)
+            case "time": 
+                field = TimeField(default = None)
 
+    return field
     
 def AddData():
     if (useDatabase == True):

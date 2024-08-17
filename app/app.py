@@ -37,17 +37,22 @@ menu = [
             ])
 ]
 
+path = os.path.join(os.getcwd() , mainWindow['mainFile'])
+
 window = webview.create_window(
+    
                         title=mainWindow['title'],
-                        url=mainWindow['mainFile'],
+                        url=path,
                         fullscreen=mainWindow['fullscreen'],
                         confirm_close=mainWindow['confirm_close'],
                         maximized=mainWindow['maximised'],
                         min_size=(mainWindow['min_size_x'], mainWindow['min_size_y']),
-                        js_api=pyjs
-                    )
+                        js_api=pyjs,
+                        )
 
 
 
-
-webview.start(debug=False, menu=menu)
+if(mainWindow['shouldHaveMenu'] == True):
+    webview.start(debug=False, menu=menu)
+else:
+    webview.start(debug=True)
