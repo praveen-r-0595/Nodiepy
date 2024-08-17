@@ -17,4 +17,7 @@ class Api():
     """
     
     def createTableData(self, dbname, data ):
+        """
+        Enum
+        """
         fb.createTable(dbname, data)

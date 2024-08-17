@@ -23,6 +23,12 @@ def startDB():
 
 # The below function is to dynamically create a table in sqlite db
 def createTable(dbname, props):
+
+    """
+    This Code
+
+    """
+
     global db
     print(props)
     jsObj = json5.loads(props)
@@ -46,26 +52,33 @@ def createTable(dbname, props):
         currentField = findField(value)
 
         migrate(
-            migrator.add_column(dbname, str(key), IntegerField(default=0))
+            migrator.add_column(dbname, str(key), currentField)
         )
 
 
 def findField(checkValue):
+   
     match checkValue:
             case 'integer':
                 field = IntegerField(default = 0)
+                return field
             case "text":
                 field = CharField(default = "data")
+                return field
             case "date":
                 field = DateField(default = None)
+                return field
             case "boolean":
                 field = IntegerField(default = 0)
+                return field
             case "largetext":
-                field = TextField(default = None)
+                field = TextField(default = "desc")
+                return field
             case "time": 
                 field = TimeField(default = None)
+                return field
 
-    return field
+    
     
 def AddData():
     if (useDatabase == True):

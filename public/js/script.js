@@ -14,7 +14,9 @@ window.addEventListener('pywebviewready', function() {
 
 data = {
     name : "text",
-    number : "integer"
+    number : "integer",
+    desc : "largetext",
+    canFly : "boolean"
 }
 
 function createDataTable(){
